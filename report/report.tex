@@ -1,0 +1,208 @@
+%!TEX program = xelatex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Sectioned Essay
+% LaTeX Template
+% Version 1.0 (3/8/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Author:
+% Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
+% Vel (vel@latextemplates.com) with slight modifications by:
+% Yuze Fu (i@xfox.me)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+% PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper, 12pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+\usepackage[table]{xcolor}
+\usepackage{fontspec}
+
+% 使用特殊的英文字体，如果缺失可以直接注释
+\setmainfont{Avenir Next}
+\setsansfont{Avenir Next}
+\setmonofont[AutoFakeSlant=0.25]{Fira Code}
+
+\usepackage{xeCJK}
+% 默认使用思源系列字体，如果缺失需要替换为机器上有的字体／注释
+\setCJKmainfont[AutoFakeSlant=0.25]{SourceHanSerifSC-Regular}
+\setCJKsansfont[AutoFakeSlant=0.25]{SourceHanSansSC-Regular}
+\setCJKmonofont[AutoFakeSlant=0.25]{Sarasa Mono SC}
+
+\usepackage{geometry}
+\geometry{left=2.54cm, top=2.54cm, right=2.54cm, bottom=2.54cm}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{forest}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{siunitx}
+
+% 为链接添加颜色，这些颜色在打印时不可见。
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+% 默认的代码设置
+\lstset{
+  % 可在此处修改默认语言
+  language={},
+  showstringspaces=false,
+  keepspaces=false,
+  numbers=left,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries\color{blue},
+  commentstyle=\itshape\color{green!50!black},
+  identifierstyle=\color{black},
+  stringstyle=\color{orange!60!black},
+  breaklines=true,
+  breakatwhitespace=true,
+  captionpos=b,
+  extendedchars=true,
+  tabsize=4
+}
+\newcounter{code}
+\lstnewenvironment{code}[3][C++]%
+  {%
+    \renewcommand\lstlistingname{代码}
+    \lstset{
+    language=#1,
+    caption=#2,
+    label=#3
+    }
+  }{}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+% 页眉、页脚设置
+\pagestyle{fancy}
+\fancyhead[L]{\Title}
+\fancyhead[C,R]{}
+\fancyfoot[L,C]{}
+\fancyfoot[R]{第 \thepage 页，共 \pageref{LastPage} 页}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% \usepackage[protrusion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{longtable}
+\usepackage{newfloat}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{multicol}
+
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+% 可在此处修改行距，默认为 1.5 倍行距
+\linespread{1.5} % Change line spacing here, Palatino benefits from a slight increase by default
+% 可在此处设置段落间距，默认无
+% \setlength{\parskip}{0.2em}
+
+% 首行缩进 2 字符
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{center} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\large{\@subtitle}
+
+\vspace{1em} % Some vertical space between the title and author name
+
+{\large\@author} % Author name
+% \\\@date % Date
+
+\vspace{1.5em} % Some vertical space between the author block and abstract
+\end{center}
+}
+
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\renewcommand\refname{参考文献}
+
+%----------------------------------------------------------------------------------------
+% TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{这里是主标题}\\ % Title
+} % Subtitle
+\newcommand\@subtitle{这里是副标题}
+\let\Title\@title
+
+\author{
+傅禹泽 \href{mailto:i@xfox.me}{i@xfox.me}} % Institution
+
+\date{2019年12月30日} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\thispagestyle{empty}
+% 如果不需要标题，可以直接注释
+\maketitle % Print the title section
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT AND KEYWORDS
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\abstractname}{摘要} % Uncomment to change the name of the abstract to something else
+
+% 如果不需要摘要，可以直接注释
+\begin{abstract}
+    这里是摘要。
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+
+\section{引言}
+
+正文、\texttt{等宽（黑体）}、\textit{斜体}、引文\cite{wiki-iphone}。引用代码 \ref{code:obj-decl}。
+
+% 代码，可以在「{code}」后插入语句修改语言，如「\begin{code}[c]{描述}{引用标记}」。
+\begin{code}{对象声明}{code:obj-decl}
+  ## (Object) User
+
+  + **id**: _string_ user id `d68014e2-4571-4e0e-8271-415301d7bcae`
+  + **username**: _string_ user nickname, unique in system `xfoxfu`
+  
+  A sample declaration of a primitive user object.
+\end{code}
+
+\begin{thebibliography}{99}
+
+  % • 参考资料：包括参考的书籍、网站、期刊论文等
+
+  \bibitem{wiki-iphone}
+    Wikipedia contributors.
+    IPhone[DB/OL].
+    \url{https://en.wikipedia.org/w/index.php?title=Representational_state_transfer&oldid=928353400}, 2020-01-01.
+\end{thebibliography}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
